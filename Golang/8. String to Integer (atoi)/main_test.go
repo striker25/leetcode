@@ -22,6 +22,12 @@ func TestMyAtoi(t *testing.T) {
 		{input: "     +004500", expect: 4500},
 		{input: "    -00134", expect: -134},
 		{input: "  -0012a42", expect: -12},
+		{input: "   +0 123", expect: 0},
+		{input: "-2147483647", expect: -2147483647},
+		{input: "2147483648", expect: 2147483647},
+		{input: "0-1", expect: 0},
+		{input: "0  123", expect: 0},
+		{input: "20000000000000000000", expect: 2147483647},
 	}
 
 	for _, c := range cases {

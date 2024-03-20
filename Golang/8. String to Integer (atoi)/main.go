@@ -1,135 +1,46 @@
 package main
 
 import (
+	"errors"
 	"fmt"
-	"log"
+	"regexp"
 	"strconv"
 	"strings"
 )
 
 func main() {
-	fmt.Println("Hello, World!")
+	fmt.Println(myAtoi("-2147483647"))
+	// expected 4500
 }
 
 func myAtoi(s string) int {
-	// remove leading spaces
-	s = strings.TrimSpace(s)
+	re := regexp.MustCompile(`^\s*([+-]?\d+)\D*`)
+	matches := re.FindStringSubmatch(s)
 
-	if len(s) == 0 {
+	if len(matches) == 0 {
 		return 0
 	}
 
-	// validate leading zeros with sign
-	newStr := ""
-
-	// validate leading zeroes with sign
-	if strings.HasPrefix(s, "+0") || strings.HasPrefix(s, "-0") {
-		for i := 1; i < len(s); i++ {
-			if string(s[i]) == "0" {
-				continue
+	number, err := strconv.Atoi(matches[1])
+	if err != nil {
+		if errors.Is(err, strconv.ErrRange){
+			if strings.Contains(matches[1], "-") {
+				return -2147483648	
 			} else {
-				if strings.HasPrefix(s, "+0") {
-					newStr = string(s[0]) + s[i-1:]
-				} else {
-					newStr = string(s[0]) + s[i-2:]
-				}	
+				return 2147483647
 			}
 		}
 
-		s = newStr
-	}
-
-	const allowedWhitespaces string = " "
-	const allowedNumbers string = "0123456789"
-	const allowedSigns string = "+-"
-
-	intStr := ""
-	lastSign := "+"
-	signCount := 0
-	hasLeadingZero := false
-
-	for _, value := range s {
-
-		v := string(value)
-		// stop where the first letter is found
-		if !strings.Contains(fmt.Sprintf("%s%s%s", allowedWhitespaces, allowedNumbers, allowedSigns), v) {
-			break
-		}
-
-		// skip whitespaces
-		if v == allowedWhitespaces {
-			continue
-		}
-
-		// skip leading zeros
-		if v == "0" && (intStr == "" || intStr == "-" || intStr == "+") {
-			hasLeadingZero = true
-			continue
-		}
-
-		// validate sign, if more than one, return 0
-		if strings.Contains(allowedSigns, v) {
-			signCount++
-		}
-
-		// validate sign in the middle when leading zeroes
-		if hasLeadingZero && len(intStr) > 1 && signCount > 0 {
-			intStr = "0"
-			break
-		}
-
-		intStr += v
-	}
-
-	
-
-	// validate sign
-	negativeSignCount := strings.Count(intStr, "-")
-	postiveSignCount := strings.Count(intStr, "+")
-	if negativeSignCount == 1 && postiveSignCount == 1 {
 		return 0
 	}
 
-	signIndex := strings.LastIndex(intStr, "-")
-	
-	if signIndex == 0 || signIndex == len(intStr)-1 { // sign at the beginning or end
-		lastSign = "-"
-	} else if signIndex != -1 { // sign in the middle
-		intStr = "0"
+	// Clamping to the 32-bit signed integer range
+	if number < -1<<31 {
+		return -1 << 31
+	}
+	if number > 1<<31-1 {
+		return 1<<31 - 1
 	}
 
-	// remove signs
-	if signCount > 1 {
-		intStr = strings.ReplaceAll(intStr, "+", "")
-		intStr = strings.ReplaceAll(intStr, "-", "")
-
-		// add the sign back
-		intStr = lastSign + intStr
-	}
-
-	// validate length does not exceed 10
-	if len(intStr) > 10 {
-		if lastSign == "-" {
-			return -2147483648
-		} else {
-			return 2147483647
-		}
-	}
-
-	// validate empty conversion
-	if intStr == "" {
-		return 0
-	}
-
-	// validate conversion
-	if len(intStr) == 1 && strings.Contains(allowedSigns, intStr) {
-		return 0
-	}
-
-	integer, err := strconv.ParseInt(intStr, 10, 32)
-	if err != nil {
-		log.Fatalf("error: %s", err)
-	}
-
-	return int(integer)
+	return number
 }
