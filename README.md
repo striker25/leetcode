@@ -16,3 +16,6 @@ Working solutions:
 | 6 | Medium     | [Zigzag Conversion](https://github.com/striker25/leetcode/tree/main/Golang/6.%20Zigzag%20Conversion)                                                                 |
 | 7 | Medium     | [Reverse Integer](https://github.com/striker25/leetcode/tree/main/Golang/7.%20Reverse%20Integer)                                                                     |
 | 8 | Medium     | [String to Integer (atoi)](<https://github.com/striker25/leetcode/blob/main/Golang/8.%20String%20to%20Integer%20(atoi)>)                                             |
+
+## Java Solutions of Leetcode75
+[Leetcode75](https://github.com/striker25/leetcode/tree/main/Java/src/main/java/org/striker25/leetcode75)
