@@ -21,7 +21,7 @@ func main() {
 	// nums = []int{-1,-2,-3,-4,-5}
 	// target = -8
 
-	nums = []int{3,3}
+	nums = []int{3, 3}
 	target = 6
 	fmt.Printf(format, nums, target, twoSum(nums, target))
 }
@@ -33,7 +33,7 @@ func twoSum(nums []int, target int) []int {
 	for i := 0; i < len(nums); i++ {
 		sum := 0
 
-		for j := 1; j <= len(nums) - 1; j++ {
+		for j := 1; j <= len(nums)-1; j++ {
 			// same element cannot be used twice
 			if i == j {
 				continue

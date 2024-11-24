@@ -1,8 +1,8 @@
 # LeetCode's challenges
 
-I'm adding my solutions for the LeetCode's challenges to this repository since their free tier doesn't store the solutions on their servers.
+I'm adding my solutions for the [LeetCode's](https://leetcode.com/problemset/) challenges to this repository since their free tier doesn't store the solutions on their servers.
 
-These solutions aim to improve my skills in the Golang programming language.🚀
+These solutions aim to improve my skills in the Go programming language.🚀
 
 Working solutions:
 
@@ -15,7 +15,8 @@ Working solutions:
 | 5 | Medium     | [Longest Palindromic Substring](https://github.com/striker25/leetcode/tree/main/Golang/5.%20Longest%20Palindromic%20Substring)                                       |
 | 6 | Medium     | [Zigzag Conversion](https://github.com/striker25/leetcode/tree/main/Golang/6.%20Zigzag%20Conversion)                                                                 |
 | 7 | Medium     | [Reverse Integer](https://github.com/striker25/leetcode/tree/main/Golang/7.%20Reverse%20Integer)                                                                     |
-| 8 | Medium     | [String to Integer (atoi)](<https://github.com/striker25/leetcode/blob/main/Golang/8.%20String%20to%20Integer%20(atoi)>)                                             |
+| 8 | Medium     | [String to Integer (atoi)](https://github.com/striker25/leetcode/blob/main/Golang/8.%20String%20to%20Integer%20(atoi))                                               |
+| 9 | Easy       | [Palindrome Number](https://leetcode.com/problems/palindrome-number/)                                                                                                |
 
 ## Java Solutions of Leetcode75
 [Leetcode75](https://github.com/striker25/leetcode/tree/main/Java/src/main/java/org/striker25/leetcode75)
