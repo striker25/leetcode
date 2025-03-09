@@ -9,23 +9,6 @@ func main() {
 	fmt.Println(lengthOfLongestSubstring(" "))
 }
 
-// func lengthOfLongestSubstring(s string) int {
-
-// 	count := 0
-
-// 	for i := 0; i < len(s); i++ {
-// 		for j := 1; j <= len(s)-1; j++ {
-// 			if s[i] == s[j] {
-// 				count = 0
-// 			}
-
-// 			count++
-// 		}
-// 	}
-
-// 	return count
-// }
-
 func lengthOfLongestSubstring(s string) int {
 
 	if len(s) == 1 { // no need to check
@@ -61,14 +44,14 @@ func lengthOfLongestSubstring(s string) int {
 	}
 
 	// 2. Find the longest word combination
-	max := 0
+	longestCombination := 0
 	for _, c := range combinations {
 		for _, v := range c {
-			if len(v) > max {
-				max = len(v)
+			if len(v) > longestCombination {
+				longestCombination = len(v)
 			}
 		}
 	}
 
-	return max
+	return longestCombination
 }

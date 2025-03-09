@@ -31,7 +31,7 @@ func reverse(number int) int {
 
 	// handle overflow
 	if reverseInt < -2_147_483_648 || reverseInt > 2_147_483_647 {
-		return 0		
+		return 0
 	}
 
 	return reverseInt

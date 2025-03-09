@@ -6,7 +6,7 @@ import (
 )
 
 func main() {
-	fmt.Println("5. Longest Palindromic Substring")
+	fmt.Println("5_Longest_Palindromic_Substring")
 	fmt.Println(longestPalindrome("babad"))
 	// fmt.Println("aaa is palindrome=", isPalindrome("aaa"))
 }
@@ -19,7 +19,7 @@ func longestPalindrome(s string) string {
 
 	// auxiliary variables to keep track of the longest palindrome
 	// using the same iteration to keep track of the longest palindrome
-	max := 0
+	maxNum := 0
 	maxStr := ""
 
 	// create each possible variation of the given string
@@ -29,11 +29,11 @@ func longestPalindrome(s string) string {
 			str := s[i:j]
 			strLen := len(str)
 			// here, for performance reasons we check the length of the string
-			// and only if the lenght is greater than the max of our current max
+			// and only if the lenght is greater than the maxNum of our current maxNum
 			// palindrome, then we check if it is a palindrome, and if it is
-			// set the max and maxStr accordingly
-			if strLen > max && isPalindrome(str) {
-				max = strLen
+			// set the maxNum and maxStr accordingly
+			if strLen > maxNum && isPalindrome(str) {
+				maxNum = strLen
 				maxStr = str
 			}
 		}

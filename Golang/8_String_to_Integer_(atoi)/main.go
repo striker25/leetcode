@@ -23,9 +23,9 @@ func myAtoi(s string) int {
 
 	number, err := strconv.Atoi(matches[1])
 	if err != nil {
-		if errors.Is(err, strconv.ErrRange){
+		if errors.Is(err, strconv.ErrRange) {
 			if strings.Contains(matches[1], "-") {
-				return -2147483648	
+				return -2147483648
 			} else {
 				return 2147483647
 			}
